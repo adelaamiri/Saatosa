@@ -1,0 +1,5 @@
+{
+  "installCommand": "cd saatosa && npm ci",
+  "buildCommand": "cd saatosa && npm run build",
+  "outputDirectory": "saatosa/dist"
+}
