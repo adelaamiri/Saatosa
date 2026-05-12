@@ -1,17 +1,16 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { FiClock, FiLayers } from "react-icons/fi";
+import { motion as Motion } from "framer-motion";
 
 import person from "../assets/man.avif";
 import watchlist from "../assets/card.png";
+import { aiFeatures } from "../data/siteContent";
 
 export default function OptimizeSection() {
   return (
-    <section className="bg-white py-28">
-      <div className="max-w-7xl mx-auto px-6 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-        {/* ================= LEFT ================= */}
+    <section className="bg-white py-16 sm:py-20 lg:py-28">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-20">
         <div>
-          <motion.span
+          <Motion.span
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -19,19 +18,19 @@ export default function OptimizeSection() {
             className="inline-block mb-6 px-4 py-2 rounded-lg bg-blue-100 text-gray-600 text-sm font-medium"
           >
             Advance Solutions
-          </motion.span>
+          </Motion.span>
 
-          <motion.h2
+          <Motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-6"
+            className="mb-6 text-3xl font-bold text-slate-900 sm:text-4xl md:text-5xl"
           >
-            Optimize Interaction <br /> with Advanced AI
-          </motion.h2>
+            Optimize Interaction with Advanced AI
+          </Motion.h2>
 
-          <motion.p
+          <Motion.p
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
@@ -40,48 +39,36 @@ export default function OptimizeSection() {
           >
             AI CRM solutions offer a powerful enhance customer satisfaction and
             drive business growth making data-driven decisions.
-          </motion.p>
+          </Motion.p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-            {/* Feature 1 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              viewport={{ once: true }}
-            >
-              <FiClock className="text-blue-500 text-3xl mb-4" />
-              <h4 className="font-semibold text-lg mb-2">Real-Time Insights</h4>
-              <p className="text-slate-500">
-                AI tools can generate high quality content optimize keywords.
-              </p>
-            </motion.div>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10">
+            {aiFeatures.map((feature, index) => {
+              const Icon = feature.icon;
 
-            {/* Feature 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
-              <FiLayers className="text-blue-500 text-3xl mb-4" />
-              <h4 className="font-semibold text-lg mb-2">
-                User-Friendly Experience
-              </h4>
-              <p className="text-slate-500">
-                User-Friendly Experience focuses creating products.
-              </p>
-            </motion.div>
+              return (
+                <Motion.div
+                  key={feature.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Icon className="mb-4 text-3xl text-blue-500" />
+                  <h4 className="mb-2 text-lg font-semibold">
+                    {feature.title}
+                  </h4>
+                  <p className="text-slate-500">{feature.description}</p>
+                </Motion.div>
+              );
+            })}
           </div>
         </div>
 
-        {/* ================= RIGHT ================= */}
-        <div className="relative flex justify-center h-full min-h-[520px]">
-          {/* Person Image */}
-          <motion.img
+        <div className="relative mx-auto flex h-full min-h-[420px] w-full max-w-lg justify-center sm:min-h-[520px]">
+          <Motion.img
             src={person}
             alt="person"
-            className="rounded-3xl w-full max-w-lg h-full object-cover"
+            className="h-full w-full rounded-3xl object-cover"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
@@ -89,10 +76,10 @@ export default function OptimizeSection() {
           />
 
           {/* Floating Card */}
-          <motion.img
+          <Motion.img
             src={watchlist}
             alt="watchlist"
-            className="absolute bottom-10 -left-10 w-56 rounded-2xl shadow-2xl"
+            className="absolute bottom-6 left-3 w-40 rounded-2xl shadow-2xl sm:bottom-10 sm:-left-10 sm:w-56"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
